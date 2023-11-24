@@ -1,0 +1,47 @@
+<ng-container>
+  <div class="p-4">
+    <div class="img-circle text-center mb-3" >
+       <span style="position: relative">
+          <!-- <img [src]="state?.appData?.imageUrl" alt="John" class="shadow" /> -->
+          <img src="https://img.freepik.com/free-icon/user_318-159711.jpg" alt="John" class="shadow" />
+       <i class="bi bi-camera-fill right-position"></i>
+       </span>
+    </div>
+    <!-- <h4 class="text-center">{{ state?.appData?.firstName }} {{ state?.appData?.lastName }}</h4> -->
+    
+ </div>
+
+    <section>
+      <div class="container">
+        <nav aria-label="breadcrumb" style="margin-top: 8px;">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a [routerLink]="['/']">Home</a>
+            </li>
+            <li class="breadcrumb-item"> <a [routerLink]="['/invoices']">Quatation</a> </li>
+            <li class="breadcrumb-item active" aria-current="page">New</li>
+
+            <li class="breadcrumb-item" aria-current="page">
+              <ul>
+                <li> <i class="fa fa-facebook"></i></li>
+                <li> ஐாதமதஸா </li>
+              </ul>
+            </li>
+          </ol>
+          
+         
+        </nav>
+        <div class="card flex justify-content-center">
+          <p-fileUpload name="myfile[]" url="https://www.primefaces.org/cdn/api/upload.php" [multiple]="true" 
+          accept="image/*" [maxFileSize]=1000000>
+              <ng-template pTemplate="toolbar">
+                  <div class="py-3">Upload 3 Files</div>
+              </ng-template>
+              <ng-template let-file pTemplate="file">
+                  <div>Custom UI to display a file</div>
+              </ng-template>
+              <ng-template pTemplate="content" let-files>
+                  <div>Additional content.</div>
+              </ng-template>
+          </p-fileUpload>
+      </div>

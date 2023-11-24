@@ -1,0 +1,77 @@
+<ng-container>
+  <section>
+    <div class="container">
+      <nav aria-label="breadcrumb" style="margin-top: 8px; background-color: lightgreen;">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a [routerLink]="['/']">Home</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a [routerLink]="['/invoices']">Minutes</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Minutes</li>
+        </ol>
+      </nav>
+      
+      <div class="row justify-content-center">
+        <p-button label="Add attendance" class="addBtn" (click)="addRow()" icon="pi pi-plus" severity="success"></p-button>
+        <br>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <span class="p-float-label">
+            <input type="text" pInputText formControlName="attendance" class="form-control" required>
+            <label htmlFor="departmentCode">attendance</label>
+          </span>
+        </div>
+      </div>
+
+           
+         
+
+      <div class="col">
+        <div class="row">
+          <div class="col-md-3">
+            <p-button (click)="removeRow(i)" severity="danger" class="delete">Remove Attetand</p-button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <label>Quatation Search</label>
+            
+    <form [formGroup]="formGroup">
+      <textarea rows="5" cols="100" pInputTextarea formControlName="text"></textarea>
+    </form>
+
+    <p>Purchase OF Meeting</p>
+    <form [formGroup]="formGroup">
+      <textarea rows="5" cols="100" pInputTextarea formControlName="text"></textarea>
+    </form>
+    <p>Opening</p>
+    <form [formGroup]="formGroup">
+      <textarea rows="5" cols="100" pInputTextarea formControlName="text"></textarea>
+    </form>
+    <p>Quatation Search</p>
+    <form [formGroup]="formGroup">
+      <textarea rows="5" cols="100" pInputTextarea formControlName="text"></textarea>
+    </form>
+
+    <div>
+      <p>Comparative Schedule</p>
+      <p>Resolution</p>
+      <p>Quatation Search</p>
+      <form [formGroup]="formGroup">
+        <textarea rows="5" cols="100" pInputTextarea formControlName="text"></textarea>
+      </form>
+      <p>Closing</p>
+      <p>Quatation Search</p>
+      <form [formGroup]="formGroup">
+        <textarea rows="5" cols="100" pInputTextarea formControlName="text"></textarea>
+      </form>
+      <p>Members Acknowledge</p>
+      <p>Signature</p>
+    </div>
+  </section>
+</ng-container>

@@ -1,0 +1,35 @@
+.p-formgrid{
+    display: flex;
+}
+.row{
+    padding: 4px;
+}
+
+:host ::ng-deep .p-inputtext { 
+	color: green; 
+	border: 2px solid green; 
+	border-radius: 10px; 
+} 
+
+:host ::ng-deep .p-inputtext:focus:enabled, 
+:host ::ng-deep .p-inputtext:hover 
+{ 
+	box-shadow: none; 
+	border: 2px solid green; 
+}
+
+:host ::ng-deep .addBtn button {
+    color: #ffffff;
+    background: #22C55E !important;
+    border: 1px solid #22C55E;
+}
+:host ::ng-deep .delete button {
+    color: #ffffff;
+    background: #EF4444;
+    border: 1px solid #EF4444;
+    padding:8px;
+    font-size: 1rem;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    border-radius: 6px;
+
+}

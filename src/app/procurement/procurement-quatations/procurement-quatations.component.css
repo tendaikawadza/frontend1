@@ -1,0 +1,27 @@
+.top-contact-menu {
+    background-color: #6aaf08;
+    width: 100%;
+    padding: 5px 0px;
+  }
+  .top-contact-menu h2 {
+    color: #fff;
+    font-size: 14px;
+    display: inline-block;
+  }
+  ul.address-top-menu {
+    list-style: none;
+    float: right;
+    padding-right: 20px;
+    vertical-align: top;
+    margin-top: 10px;
+  }
+  ul.address-top-menu li {
+    display: inline-block;
+  }
+  ul.address-top-menu li:after {
+    content: '|';
+    color: #fff;
+  }
+  ul.address-top-menu li:last-child:after {
+    content: ' ';
+  }
