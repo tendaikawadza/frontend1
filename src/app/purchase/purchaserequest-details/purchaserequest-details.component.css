@@ -1,7 +1,7 @@
 
 
 .text-secondary-d1 {
-    color: #728299!important;
+    color: rgba(17, 66, 18, 0.92)!important;
 }
 .page-header {
     margin: 0 0 1rem;
@@ -68,7 +68,7 @@ hr {
     padding-top: .75rem!important;
 }
 .bgc-default-tp1 {
-    background-color: rgba(121,169,197,.92)!important;
+    background-color: rgba(17, 66, 18, 0.92)!important;
 }
 .bgc-default-l4, .bgc-h-default-l4:hover {
     background-color: #f3f8fa!important;
@@ -79,7 +79,7 @@ hr {
 }
 
 .btn-light {
-    color: #757984;
+    color: #536dbb;
     background-color: #f5f6f9;
     border-color: #dddfe4;
 }
@@ -91,14 +91,14 @@ hr {
     font-size: 120%!important;
 }
 .text-primary-m1 {
-    color: #4087d4!important;
+    color: #40d46c!important;
 }
 
 .text-danger-m1 {
     color: #dd4949!important;
 }
 .text-blue-m2 {
-    color: #68a3d5!important;
+    color: #d56c68!important;
 }
 .text-150 {
     font-size: 150%!important;

@@ -41,10 +41,12 @@
     </div>
     <label>Quatation Search</label>
             
-    <form [formGroup]="formGroup">
-      <textarea rows="5" cols="100" pInputTextarea formControlName="text"></textarea>
-    </form>
+  
+  <input type="text" [(ngModel)]="inputValue" (input)="sendValue()">
 
+      <!-- <textarea rows="5" cols="100"   [(ngModel)]="qtSearch"></textarea> -->
+   
+<!-- 
     <p>Purchase OF Meeting</p>
     <form [formGroup]="formGroup">
       <textarea rows="5" cols="100" pInputTextarea formControlName="text"></textarea>
@@ -56,20 +58,20 @@
     <p>Quatation Search</p>
     <form [formGroup]="formGroup">
       <textarea rows="5" cols="100" pInputTextarea formControlName="text"></textarea>
-    </form>
+    </form> -->
 
     <div>
       <p>Comparative Schedule</p>
       <p>Resolution</p>
       <p>Quatation Search</p>
-      <form [formGroup]="formGroup">
+      <!-- <form [formGroup]="formGroup">
         <textarea rows="5" cols="100" pInputTextarea formControlName="text"></textarea>
       </form>
       <p>Closing</p>
       <p>Quatation Search</p>
       <form [formGroup]="formGroup">
         <textarea rows="5" cols="100" pInputTextarea formControlName="text"></textarea>
-      </form>
+      </form> -->
       <p>Members Acknowledge</p>
       <p>Signature</p>
     </div>

@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable, catchError, map, of, startWith } from 'rxj
 import { DataState } from 'src/app/enum/datastate.enum';
 import { AuditService } from 'src/app/service/audit.service';
 import { saveAs } from 'file-saver';
-
+import * as XLSX from 'xlsx';
 
 
 @Component({
@@ -16,8 +16,9 @@ import { saveAs } from 'file-saver';
   styleUrls: ['./audit.component.css']
 })
 export class AuditComponent implements OnInit {
- 
-
+ data:any[][];
+ headers:string[];
+ dataLoaded=false;
   private fileStatusSubject = new BehaviorSubject<{ status: string, type: string, percent: number }>({
     status: 'defaultStatus',
     type: 'defaultType',
@@ -37,23 +38,40 @@ export class AuditComponent implements OnInit {
   
  
   ngOnInit(): void {
-    this.report();
+   
+    this.fetchExcelFromApi();
     //throw new Error('Method not implemented.');
   }
-  report(): void {
-    this.test = this.auditService.downloadReport$().pipe(
-        map((response: HttpEvent<string[] | Blob>) => {
-          console.log(response);
-         // this.reportProgress(response);
-          return { dataState: DataState.LOADED, appData: this.dataSubject.value };
-        }),
-        // startWith({ dataState: DataState.LOADED, appData: this.dataSubject.value }),
-        // catchError((error: string) => {
-        //   return of({ dataState: DataState.LOADED, error, appData: this.dataSubject.value })
-        // })
-      )
-      console.log(this.test);
+ 
+  
+  fetchExcelFromApi() {
+    this.auditService.downloadReport$()
+    .pipe(
+      map(response => {
+        console.log(response);
+  }));
+    
+    
+    
+    // {
+    //   const reader = new FileReader();
+    //   reader.onload = (e: any) => {
+    //     const data = new Uint8Array(e.target.result);
+    //     const workbook = XLSX.read(data, { type: 'array' });
+    //     const sheetName = workbook.SheetNames[0]; // Assuming it's the first sheet
+
+    //     const worksheet = workbook.Sheets[sheetName];
+    //     this.data = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+    //     this.headers = this.data[0];
+    //     this.data = this.data.slice(1); // Removing header row
+    //     this.dataLoaded = true;
+    //   };
+
+    //   reader.readAsArrayBuffer(fileBlob);
+    // });
   }
+
+
   
   private reportProgress(httpEvent: HttpEvent<string[] | Blob>): void {
     switch (httpEvent.type) {

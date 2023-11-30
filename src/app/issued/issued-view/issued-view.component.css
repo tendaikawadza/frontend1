@@ -1,0 +1,75 @@
+.p-datatable .p-datatable-header {
+    background: #f8f9fa;
+    color: #343a40;
+    border: 1px solid #dee2e6;
+    border-width: 1px 0 1px 0;
+    padding: 1rem 1rem;
+    font-weight: 700;
+    
+}
+
+.flex {
+    display: flex!important;
+}
+.ml-auto {
+    margin-left: auto!important;
+}
+.p-input-icon-left, .p-input-icon-right {
+    position: relative;
+    display: inline-block;
+}
+.pi {
+    font-family: primeicons;
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.p-input-icon-left > .p-icon-wrapper.p-icon, .p-input-icon-left > i:first-of-type {
+    left: 0.75rem;
+    color: #6c757d;
+}
+.p-component, .p-component * {
+    box-sizing: border-box;
+}
+.p-input-icon-left > .p-inputtext {
+    padding-left: 2.5rem;
+}
+.pi-search:before {
+    content: "\e908";
+}
+
+.pi:before {
+    --webkit-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+::ng-deep .p-inputtext {
+    font-family: var(--font-family);
+    font-feature-settings: var(--font-feature-settings, normal);
+    font-size: 1rem;
+    color: #495057;
+    background: #ffffff;
+    padding: 0.75rem 0.75rem;
+    border: 1px solid #ced4da;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    appearance: none;
+    border-radius: 6px;
+}
+.p-component {
+    font-family: var(--font-family);
+    font-feature-settings: var(--font-feature-settings, normal);
+    font-size: 1rem;
+    font-weight: normal;
+}
+::ng-deep .p-input-icon-left > .p-inputtext {
+    padding-left: 2.5rem !important;
+}
+.btngroup{
+    display: flex;
+}

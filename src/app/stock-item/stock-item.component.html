@@ -1,15 +1,14 @@
 <div class="register-form">
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <form [formGroup]="regform" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label>Requesting Department</label>
-            <input type="text" formControlName="requestingDepartment" class="form-control"
-                [ngClass]="{ 'is-invalid': submitted && f['requestingDepartment'].errors }" />
+            <input type="text" formControlName="requestingDepartment" class="form-control" />
             <div *ngIf="submitted && f['requestingDepartment'].errors" class="invalid-feedback">
                 <div *ngIf="f['requestingDepartment'].errors['required']">requesting Department is required</div>
             </div>
         </div>
 
-        <div class="form-group">
+       <!--- <div class="form-group">
             <label>Product Code</label>
             <input type="number" formControlName="productCode" class="form-control"
                 [ngClass]="{ 'is-invalid': submitted && f['productCode'].errors }" />
@@ -107,6 +106,6 @@
             <button type="button" (click)="onReset()" class="btn btn-warning float-right">
                 Reset
             </button>
-        </div>
+        </div>-->
     </form>
 </div>

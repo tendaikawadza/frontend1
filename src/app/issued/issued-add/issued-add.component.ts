@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
+import { CustomerService } from 'src/app/service/customer.service';
 
 @Component({
   selector: 'app-issued-add',
@@ -7,10 +8,15 @@ import { FormArray, FormGroup } from '@angular/forms';
   styleUrls: ['./issued-add.component.css']
 })
 export class IssuedAddComponent implements OnInit {
+  constructor(private customerService: CustomerService){}
 fb: any;
 ngOnInit(): void {
+this.customerService.AllIssue$().subscribe(
+  (results:any)=>{
+    console.log(results);
+  }
 
-  throw new Error('Method not implemented.');
+);
 }
 addIssue() {
 throw new Error('Method not implemented.');

@@ -2,24 +2,35 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpEvent, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, tap, throwError } from 'rxjs';
 import { CustomHttpResponse, CustomerState, Page, Profile } from '../interface/appstates';
-import { User } from '../interface/user';
+
 import { Key } from '../enum/key.enum';
 import { Stats } from '../interface/stats';
 import { Customer } from '../interface/customer';
 import { Invoice } from '../interface/invoice';
+import { Subject } from 'rxjs';
+import { Issue } from '../interface/issue';
+import { User } from '../model/user';
 @Injectable()
 
 export class CustomerService {
+    
+  private valueSource = new Subject<string>();
+  valueUpdate = this.valueSource.asObservable()
     server: string = 'http://localhost:8080';
-
+    qtSerach: any;
     constructor(private http: HttpClient) { }
 
-    public addPurchahse(product:any): Observable<any> {
-        let url=`${this.server}/purchaserequest/upload`;    
-        return this.http.post<any>(url,product);
-      }
-     
-    
+    public addPurchahse(product: any): Observable<any> {
+        let url = `${this.server}/purchaserequest/upload`;
+        return this.http.post<any>(url, product);
+    }
+
+    setValue(value: any) {
+        this.qtSerach = value;
+    }
+    getVal() {
+        return this.qtSerach;
+    }
 
     customers$ = (page: number = 0) => <Observable<CustomHttpResponse<Page<Customer> & User & Stats>>>
         this.http.get<CustomHttpResponse<Page<Customer> & User & Stats>>
@@ -116,4 +127,75 @@ export class CustomerService {
         }
         return throwError(() => errorMessage);
     }
+
+    
+    // createIssue$ = (issueId: number) => <Observable<CustomHttpResponse<issue >>>
+    //     this.http.post<CustomHttpResponse<issue>>
+    //         (`${this.server}/issue/create/${issueId}`)
+    //         .pipe(
+    //             tap(console.log),
+    //             catchError(this.handleError)
+    //         );
+
+
+// Method to collect issues
+AllIssue$ = (): Observable<any> => {
+    // Make an HTTP GET request to the `${this.server}/issues/all` endpoint
+    return this.http.get<CustomHttpResponse<any>>(`${this.server}/issues/all`)
+      .pipe(
+        // Log the emitted values to the console for debugging
+        tap(console.log),
+        
+        // Catch any errors that occur during the observable stream
+        catchError(this.handleError)
+      );
+  };
+
+
+
+  
+  // Method to get a single issue
+  getIssue$ = (issueId: number = 1): Observable<CustomHttpResponse<Issue>> => {
+    // Make an HTTP POST request to the `${this.server}/issue/get/${issueId}` endpoint
+    return this.http.get<CustomHttpResponse<Issue>>(`${this.server}/issue/get/${issueId}`)
+      .pipe(
+        // Log the emitted values to the console for debugging
+        tap(console.log),
+        
+        // Catch any errors that occur during the observable stream
+        catchError(this.handleError)
+      );
+  };
+    // //method to view the issue details
+    // issueDetails$=(issueId:number) => Observable<CustomHttpResponse<Issue & User>>{
+    //     // Make an HTTP POST request to the `${this.server}/issue/get/${issueId}` endpoint
+    // return this.http.get<CustomHttpResponse<Issue & User>>(`${this.server}/issue/get/${issueId}`)
+    // .pipe(
+    //   // Log the emitted values to the console for debugging
+    //   tap(console.log),
+      
+    //   // Catch any errors that occur during the observable stream
+    //   catchError(this.handleError)
+
+
+    // }
+
+  
+
+
+
+
+
+
+
+  updateValue(value: string) {
+    this.valueSource.next(value);
+  }
 }
+
+
+
+
+
+
+

@@ -75,7 +75,8 @@ export class UserComponent implements OnInit {
 
   sendNotification: any;
   notifications: any;
-  isAdmin: any;
+  isauditor: boolean;
+  
   constructor(private userService: UserService,
     private stockService: StockService,
     private authenticationService: AuthenticationService,
@@ -276,20 +277,20 @@ console.log(event);
   }
 
 
-  public get isAdminOrManager(): boolean {
-    return this.isAdmin || this.isManager;
-  }
+  // public get isAdminOrManager(): boolean {
+  //   return this.isAdmin || this.isManager;
+  // }
 
 
 
 
-  public get isManager(): boolean {
-    const role = this.getUserRole();
+  // public get isManager(): boolean {
+  //   const role = this.getUserRole();
 
 
-    return (this.isAdmin || role) === Role.MANAGER;
+  //   return (this.isAdmin || role) === Role.MANAGER;
 
-  }
+  // }
 
 
 
@@ -359,6 +360,48 @@ console.log(event);
       }
     );
   }
+ 
+ //permisions method
+  public get isAdmin(): boolean {
+    return this.getUserRole() === Role.Admin || this.getUserRole() === Role.SUPER_ADMIN;
+  }
+
+  public get isManager(): boolean {
+    return this.isAdmin || this.getUserRole() === Role.MANAGER;
+  }
+
+  public get isAdminOrManager(): boolean {
+    return this.isAdmin || this.isManager;
+  }
+  public get isAdminOrisAuditor(): boolean {
+    return this.isAdmin || this.isauditor;
+  }
+
+
+
+
+  public get isStoresManagerOrStoresAssistanceOrAdminManager(): boolean {
+    return (
+      this.getUserRole() === Role.STORESMANAGER ||
+      this.getUserRole() === Role.STOREASSISTANCE ||
+      this.getUserRole() === Role.ADMINMANAGER
+    );
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  // private getUserRole2(): string {
+  //   return this.authenticationService.getUserFromLocalCache().role;
+  // }
 
 
 }

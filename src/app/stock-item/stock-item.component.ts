@@ -8,18 +8,7 @@ import { StockService } from '../service/stock.service';
   styleUrls: ['./stock-item.component.css']
 })
 export class StockItemComponent implements OnInit {
-  form: FormGroup = new FormGroup({
-    requestingDepartment: new FormControl(''),
-    productCode: new FormControl(),
-    departmentCode: new FormControl(''),
-    purposeOfIssue: new FormControl(''),
-    itemDescription: new FormControl(''),
-    dateOfPreviousIssue: new FormControl(''),
-    previusIssueQuanity: new FormControl(),
-    estimatedValue: new FormControl(),
-    signatureImageUrl: new FormControl(''),
-    quantity: new FormControl(),
-  });
+  regform: FormGroup;
   submitted = false;
 
 
@@ -27,7 +16,7 @@ export class StockItemComponent implements OnInit {
     private stockService: StockService) { }
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group(
+    this.regform = this.formBuilder.group(
       {
         requestingDepartment: ['', Validators.required],
         productCode: [null, [Validators.required],],
@@ -50,20 +39,20 @@ export class StockItemComponent implements OnInit {
 
 
   get f(): { [key: string]: AbstractControl } {
-    return this.form.controls;
+    return this.regform.controls;
   }
 
   onSubmit(): void {
     this.submitted = true;
-    if (this.form.invalid) {
+    if (this.regform.invalid) {
       return;
     }
-    console.log(JSON.stringify(this.form.value, null, 2));
+    console.log(JSON.stringify(this.regform.value, null, 2));
   }
 
   onReset(): void {
     this.submitted = false;
-    this.form.reset();
+    this.regform.reset();
   }
 
 }

@@ -1,6 +1,7 @@
 import { HttpClient, HttpEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, tap } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ import { Observable, catchError, tap } from 'rxjs';
 export class AuditService {
   constructor(private http: HttpClient) {}
   server: any;
+  public host = environment.apiUrl;
   handleError(handleError: any): any {
     throw new Error('Method not implemented.');
   }
@@ -17,8 +19,8 @@ export class AuditService {
 
 
   downloadReport$ = () => <Observable<HttpEvent<Blob>>>
-        this.http.get(`${this.server}/stock/download/report`,
-            { reportProgress: true, observe: 'events', responseType: 'blob' })
+        this.http.get(`${this.host}/stock/download/report`,
+        {observe: 'response', responseType: 'blob'})
             .pipe(
                 tap(console.log),
                 catchError(this.handleError)

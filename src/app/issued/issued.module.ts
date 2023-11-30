@@ -28,20 +28,17 @@ import { IssuedViewComponent } from './issued-view/issued-view.component';
 
 @NgModule({
     declarations: [
-
     
     IssuedAddComponent,
     IssuedComponent,
     IssuedAllComponent,
     IssuedViewComponent
   ],
-    imports: [
-      
+    imports: [      
       CommonModule,
       TabViewModule,      
       FormsModule,
-      ReactiveFormsModule,
-      
+      ReactiveFormsModule,      
       TableModule,
       ButtonModule,
       FormsModule,
