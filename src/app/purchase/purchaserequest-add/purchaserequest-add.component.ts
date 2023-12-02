@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { Observable, BehaviorSubject, map, startWith, catchError, of } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { DataState } from 'src/app/enum/datastate.enum';
-import { CustomHttpResponse, Page } from 'src/app/interface/appstates';
+import { CustomHttpResponse } from 'src/app/interface/appstates';
 import { Customer } from 'src/app/interface/customer';
 import { State } from 'src/app/interface/state';
 import { User } from 'src/app/interface/user';
@@ -25,14 +25,14 @@ export class PurchaserequestAddComponent implements OnInit {
   signatureImg: string;
   // @ViewChild(SignaturePad) signaturePad: SignaturePad;
   myForm: FormGroup;
-  signaturePadOptions: Object = { 
+  signaturePadOptions: Object = {
     'minWidth': 2,
     'canvasWidth': 700,
     'canvasHeight': 300
   };
   files:any;
   userId:any=localStorage.getItem('user');
-  constructor(private customerService: CustomerService, 
+  constructor(private customerService: CustomerService,
     private notification: NotificationService, public fb: FormBuilder) {
       this.myForm = this.fb.group({
         gridRows: this.fb.array([]),
@@ -55,22 +55,22 @@ export class PurchaserequestAddComponent implements OnInit {
     //     this.addForm.removeControl('rows');
     //   }
     // });
-   
-    this.newInvoiceState$ = this.customerService.newInvoice$()
-      .pipe(
-        map(response => {
-       //   this.notification.onDefault(response.message);
-          console.log(response);
-          this.dataSubject.next(response);
-          return { dataState: DataState.LOADED, appData: response };
-        }),
-        startWith({ dataState: DataState.LOADING }),
-        catchError((error: string) => {
-       //   this.notification.onError(error);
-          return of({ dataState: DataState.ERROR, error })
-        })
-      )
-      
+
+    // this.newInvoiceState$ = this.customerService.newInvoice$()
+    //   .pipe(
+    //     map(response => {
+    //    //   this.notification.onDefault(response.message);
+    //       console.log(response);
+    //       this.dataSubject.next(response);
+    //       return { dataState: DataState.LOADED, appData: response };
+    //     }),
+    //     // startWith({ dataState: DataState.LOADING }),
+    //     catchError((error: string) => {
+    //    //   this.notification.onError(error);
+    //       return of({ dataState: DataState.ERROR, error })
+    //     })
+    //   )
+
   }
 
    // Get the form array for grid rows
@@ -109,8 +109,8 @@ export class PurchaserequestAddComponent implements OnInit {
   }
   ngAfterViewInit() {
     // this.signaturePad is now available
-    // this.signaturePad.set('minWidth', 2); 
-    // this.signaturePad.clear(); 
+    // this.signaturePad.set('minWidth', 2);
+    // this.signaturePad.clear();
   }
 save(){
   console.log('test')
@@ -129,7 +129,7 @@ save(){
   }
 
   savePad() {
-    
+
   }
   onFileSelected(event: Event): void {
     const inputElement:any = event.target as HTMLInputElement;
@@ -141,7 +141,7 @@ save(){
       reader.onload = (e: any) => {
         const uint8Array = new Uint8Array(e.target.result);
         console.log('Uint8Array:', uint8Array);
-     
+
         const byteArray = this.uint8ArrayToByteArray(uint8Array);
         console.log(byteArray);
         this.files=byteArray;
@@ -152,17 +152,17 @@ save(){
   }
   uint8ArrayToByteArray(uint8Array: Uint8Array): number[] {
     const byteArray: number[] = [];
-  
+
     for (let i = 0; i < uint8Array.length; i++) {
       byteArray.push(uint8Array[i]);
     }
-  
+
     return byteArray;
   }
- 
- 
- 
-  
+
+
+
+
 
 
   newInvoice(): void {
@@ -178,7 +178,7 @@ save(){
     // Convert the data URL to a Blob
   //  const signatureData = this.signaturePad.toDataURL(); // Get the base64 data of the signature
 //console.log(signatureData);
- 
+
 //  const byteCharacters = atob(resobj?.profileImage.split(',')[1]);
 //     const byteNumbers = new Array(byteCharacters.length);
 //     for (let i = 0; i < byteCharacters.length; i++) {
@@ -190,7 +190,7 @@ save(){
 
 
     // list.forEach((a:any)=>{
-    
+
     //   a['requestingDepartment']=resobj['requestingDepartment'];
     //   a['departmentCode']=resobj['departmentCode'];
     //   a['requestReason']=resobj['departmentCode'];
@@ -205,11 +205,11 @@ save(){
     //   a['type']=null;
     //   a['userId']=7;
     //   tmparr.push(a);
-      
+
     //   })
-    
+
     let newarr={
-     
+
          purchaseDate:"09/05/2023",
        requestingDepartment:"test",
        departmentCode:44,
@@ -224,7 +224,7 @@ save(){
        type:"",
        profileImage:this.files
   }
-      
+
       console.log(newarr);
     this.customerService.addPurchahse(newarr).subscribe(data=>{
 console.log('data')

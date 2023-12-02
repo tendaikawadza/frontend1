@@ -5,23 +5,21 @@ import { AuthenticationGuard } from './guard/authentication.guard';
 import { StockComponent } from './stock/stock/stock.component';
 import { StockdashboardComponent } from './stockdashboard/stockdashboard.component';
 
-import { StockrequestComponent } from './stockrequest/stockrequest.component';
-import { PurchaseRequastAdminComponent } from './purchase-requast-admin/purchase-requast-admin.component';
+import { AuditComponent } from './audit/audit/audit.component';
+import { HeadProcurementAuthorisationComponent } from './component/head-procurement-authorisation/head-procurement-authorisation.component';
+import { MinutesComponent } from './component/minutes/minutes.component';
+import { NewHeadProcurementAuthorisationComponent } from './component/new-head-procurement-authorisation/new-head-procurement-authorisation.component';
 import { LoginComponent } from './login/login.component';
-import { UserComponent } from './user/user.component';
+import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { StockrequestComponent } from './stockrequest/stockrequest.component';
+import { UserComponent } from './user/user.component';
 import { VerifyComponent } from './user/verify/verify.component';
-import { ProfileComponent } from './profile/profile.component';
-import { HeadProcurementAuthorisationComponent } from './component/head-procurement-authorisation/head-procurement-authorisation.component';
-import { NewHeadProcurementAuthorisationComponent } from './component/new-head-procurement-authorisation/new-head-procurement-authorisation.component';
-import { AddProcurementComponent } from './component/add-procurement/add-procurement.component';
-import { MinutesComponent } from './component/minutes/minutes.component';
-import { AuditComponent } from './audit/audit/audit.component';
 
 
 const routes: Routes = [
-  
+
   { path: 'login', component: LoginComponent },
   { path: 'resetpassword', component: ResetpasswordComponent,canActivate: [AuthenticationGuard] },
   { path: 'user/verify/account/:key', component: VerifyComponent,canActivate: [AuthenticationGuard] },
@@ -31,14 +29,19 @@ const routes: Routes = [
   //{ path: 'purchase', component: PurchaseRequastAdminComponent },
   {path: 'stockrequest' ,component:StockrequestComponent, canActivate: [AuthenticationGuard]},
   { path: 'stock', component: StockComponent, canActivate: [AuthenticationGuard]},
-  { path: 'user/management', component: UserComponent, canActivate: [AuthenticationGuard]}, 
-  { path: 'Dashboard', component:StockdashboardComponent,canActivate: [AuthenticationGuard]}, 
+  { path: 'user/management', component: UserComponent, canActivate: [AuthenticationGuard]},
+  { path: 'Dashboard', component:StockdashboardComponent,canActivate: [AuthenticationGuard]},
   { path: 'HeadProcurementAuthorisation', component:HeadProcurementAuthorisationComponent,canActivate: [AuthenticationGuard]},
-  { path: 'minutes', component:MinutesComponent,canActivate: [AuthenticationGuard]},  
-  { path: 'audit', component:AuditComponent,canActivate: [AuthenticationGuard]},  
-  
-  { path: 'HeadProcurementAuthorisation/new', component:NewHeadProcurementAuthorisationComponent,canActivate: [AuthenticationGuard]}, 
-  { path: 'procurement', 
+  { path: 'minutes', component:MinutesComponent,canActivate: [AuthenticationGuard]},
+  {
+    path: 'audit',
+     component:AuditComponent,
+
+  // canActivate: [AuthenticationGuard]
+},
+
+  { path: 'HeadProcurementAuthorisation/new', component:NewHeadProcurementAuthorisationComponent,canActivate: [AuthenticationGuard]},
+  { path: 'procurement',
   loadChildren: () => import('./procurement/procurement-module').then(m => m.ProcurementModule)
 },
   {
@@ -53,10 +56,10 @@ const routes: Routes = [
     path: 'issued',
     loadChildren: () => import('./issued/issued.module').then(m => m.issuedModule)
   },
-  {path: 'stock/:id', component:StockComponent, pathMatch: 'full'}, 
+  {path: 'stock/:id', component:StockComponent, pathMatch: 'full'},
   { path: '', redirectTo: '/login', pathMatch: 'full' }
 
-  
+
 ];
 
 
@@ -64,8 +67,8 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { 
+export class AppRoutingModule {
 
 
-  
+
 }

@@ -1,60 +1,60 @@
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http"
+import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { AuthenticationGuard } from './guard/authentication.guard';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { NotificationModule } from './notification.module';
 import { NotificationService } from './service/notification.service';
-import { FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 import { StockComponent } from './stock/stock/stock.component';
 import { StockrequestComponent } from './stockrequest/stockrequest.component';
 
 import { StockService } from './service/stock.service';
 
-import { NavbarComponent } from './navbar/navbar.component';
-import { FooterComponent } from './footer/footer.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { DialogModule } from 'primeng/dialog';
-import { ButtonModule } from 'primeng/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastModule } from 'primeng/toast';
-import { TableModule } from 'primeng/table';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
-import { SliderModule } from 'primeng/slider';
-import { MultiSelectModule } from 'primeng/multiselect';
-import { ContextMenuModule } from 'primeng/contextmenu';
-import { DropdownModule } from 'primeng/dropdown';
-import { ProgressBarModule } from 'primeng/progressbar';
-import { InputTextModule } from 'primeng/inputtext';
-import { FileUploadModule } from 'primeng/fileupload';
-import { ToolbarModule } from 'primeng/toolbar';
-import { RatingModule } from 'primeng/rating';
-import { RadioButtonModule } from 'primeng/radiobutton';
-import { InputNumberModule } from 'primeng/inputnumber';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { ConfirmationService } from 'primeng/api';
-import { MessageService } from 'primeng/api';
+import { ContextMenuModule } from 'primeng/contextmenu';
+import { DialogModule } from 'primeng/dialog';
+import { DropdownModule } from 'primeng/dropdown';
+import { FileUploadModule } from 'primeng/fileupload';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
-import { StockdashboardComponent } from './stockdashboard/stockdashboard.component';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { RatingModule } from 'primeng/rating';
+import { SliderModule } from 'primeng/slider';
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { ToolbarModule } from 'primeng/toolbar';
+import { FooterComponent } from './footer/footer.component';
+import { NavbarComponent } from './navbar/navbar.component';
 import { PurchaseRequastAdminComponent } from './purchase-requast-admin/purchase-requast-admin.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { StockdashboardComponent } from './stockdashboard/stockdashboard.component';
 
+import { CardModule, } from 'primeng/card';
 import { MenuModule } from 'primeng/menu';
 import { StepsModule } from 'primeng/steps';
-import { CardModule, } from 'primeng/card';
 
 import { AuthenticationService } from './service/authentication.service';
 
 import { SidebarModule } from 'primeng/sidebar';
 import { LoginComponent } from './login/login.component';
-import { UserComponent } from './user/user.component';
-import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
+import { RegisterComponent } from './register/register.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
-import { VerifyComponent } from './user/verify/verify.component';
+import { ExportService } from './service/dist/export-service';
 import { UserService } from './service/user.service';
+import { UserComponent } from './user/user.component';
+import { VerifyComponent } from './user/verify/verify.component';
 
 
 
@@ -63,8 +63,8 @@ import { UserService } from './service/user.service';
     AppComponent,
     LoginComponent,
     StockComponent,
-    
-    StockrequestComponent,  
+
+    StockrequestComponent,
     UserComponent,
     RegisterComponent,
     NavbarComponent,
@@ -102,7 +102,7 @@ import { UserService } from './service/user.service';
     ContextMenuModule,
     DropdownModule,
     ToastModule,
-    
+
     InputTextModule,
     ProgressBarModule,
     HttpClientModule,
@@ -115,14 +115,14 @@ import { UserService } from './service/user.service';
     InputTextareaModule,
     FormsModule,
     SidebarModule,
-    
-    
+
+
 
 
 
   ],
   exports: [TableModule],
-  providers: [UserService, NotificationService, StockService, MessageService, AuthenticationGuard, AuthenticationService,
+  providers: [UserService, NotificationService, StockService, MessageService, AuthenticationGuard, AuthenticationService,ExportService,
     ConfirmationService, AuthenticatorResponse,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],

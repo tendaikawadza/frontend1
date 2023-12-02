@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, BehaviorSubject, map, startWith, catchError, of } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { DataState } from 'src/app/enum/datastate.enum';
 import { CustomHttpResponse, Page } from 'src/app/interface/appstates';
 import { Invoice } from 'src/app/interface/invoice';
@@ -40,7 +40,7 @@ export class PurchaserequestComponent  implements OnInit {
   constructor(private router: Router, private customerService: CustomerService, private notification: NotificationService) { }
 
   ngOnInit(): void {
-   
+
     this.customerService.invoices$().subscribe(user=>{
 console.log('ttttttttttttttttttttttttttt');
 //this.users=user;
@@ -87,26 +87,26 @@ console.log(this.users);
 }
 getEventValue($event:any) :string {
   return $event.target.value;
-} 
+}
 
   editPurchase(i:any){}
   deleteUser(i:any){}
   goToPage(pageNumber?: number): void {
-    this.invoicesState$ = this.customerService.invoices$(pageNumber)
-      .pipe(
-        map(response => {
-         // this.notification.onDefault(response.message);
-          console.log(response);
-          this.dataSubject.next(response);
-        //  this.currentPageSubject.next(pageNumber);
-          return { dataState: DataState.LOADED, appData: response };
-        }),
-        startWith({ dataState: DataState.LOADED, appData: this.dataSubject.value }),
-        catchError((error: string) => {
-        //  this.notification.onError(error);
-          return of({ dataState: DataState.LOADED, error, appData: this.dataSubject.value })
-        })
-      )
+    // this.invoicesState$ = this.customerService.invoices$(pageNumber)
+    //   .pipe(
+    //     map(response => {
+    //      // this.notification.onDefault(response.message);
+    //       console.log(response);
+    //       this.dataSubject.next(response);
+    //     //  this.currentPageSubject.next(pageNumber);
+    //       return { dataState: DataState.LOADED, appData: response };
+    //     }),
+    //     startWith({ dataState: DataState.LOADED, appData: this.dataSubject.value }),
+    //     catchError((error: string) => {
+    //     //  this.notification.onError(error);
+    //       return of({ dataState: DataState.LOADED, error, appData: this.dataSubject.value })
+    //     })
+    //   )
   }
 
   goToNextOrPreviousPage(direction?: string): void {
